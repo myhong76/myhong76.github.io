@@ -8,9 +8,9 @@ document.getElementById('btn').addEventListener('click', function() {
     });
 
     function onScanSuccess(decodedText, decodedResult) {
-        console.log(`Code matched = ${decodedText}`, decodedResult);
+        // Stop the scanner
         html5QrcodeScanner.stop().then(() => {
-            alert(`QR Code detected: ${decodedText}`);
+            document.getElementById('scanned-text').textContent = decodedText; // Display scanned text
             scannerContainer.style.display = 'none'; // Hide scanner after scan
         }).catch(err => console.log(`Error stopping the scanner: ${err}`));
     }
@@ -19,7 +19,7 @@ document.getElementById('btn').addEventListener('click', function() {
         console.log(`Scan error: ${error}`);
     }
 
-    html5QrcodeScanner.start({ facingMode: "environment" }, 
+    html5QrcodeScanner.start({ facingMode: "environment" },
                              { fps: 10, qrbox: 250 },
                              onScanSuccess,
                              onScanFailure);

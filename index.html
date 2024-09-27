@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR Code Scanner2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    TEST
-<div id="reader" style="width:600px;height:400px;">QR Test</div>
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="javascript">
-function onScanSuccess(decodedText, decodedResult) {
-    console.log(`Code matched = ${decodedText}`, decodedResult);
-}
-
-function onScanFailure(error) {
-    console.log(`Code scan error = ${error}`);
-}
-
-let html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250 });
-
-html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-</script>
-
+    <div id="scanner-container" style="display: none;">
+        <div id="reader" style="width:600px;height:400px;"></div>
+    </div>
+    <button id="btn">Scan QR Code</button>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="app.js"></script>
 </body>
 </html>
